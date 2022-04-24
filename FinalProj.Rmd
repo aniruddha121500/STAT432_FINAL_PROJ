@@ -8,22 +8,118 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+The code segment below imports the relevant libraries needed for this assignment.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r, echo=TRUE}
+library(factoextra)
 ```
 
-## Including Plots
+### Project Description and Summary
 
-You can also embed plots, for example:
+[FINISH!!!] *Finish at the end of project
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Literature Review
+
+[cite later: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MNIST-SPM2012.pdf]
+
+The MNIST data set contains $60,000$ training hand written images and $10,000$ testing hand written images. Both the training set and the testting set are drawn from the same distribution. This data set was created to facilitate the process of learning pattern recognition techniques while spending minimal time formatting the data. 
+
+[cite later: https://paperswithcode.com/sota/image-classification-on-mnist]
+
+The best accuracy for the **MNIST** data set was $99.91\%$, and therefore an error rate of $0.09\%$. This accuracy was achieved by using a homogeneous ensemble with simple CNN.
+
+[cite later: https://arxiv.org/abs/2008.10400]
+
+[FINISH!!!] *summarize approach
+
+[cite later: https://arxiv.org/pdf/2003.08562v3.pdf]
+
+[FINISH!!!] *summarize approach
+
+### Summary Statistics, Data Processing and Unsupervised Learning.
+
+The code segment below imports the relevant data needed for this analysis.
+
+```{r, echo=TRUE}
+mnist_test  <- read.csv(file="archive/fashion-mnist_test.csv")
+mnist_train <- read.csv(file="archive/fashion-mnist_train.csv")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The number of variables present in the data set **mnist_train** is displayed by the code segment below.
+
+```{r, echo=TRUE}
+length(colnames(mnist_train))
+```
+
+The number of variables present in the data set **mnist_train** is displayed by the code segment below.
+
+```{r, echo=TRUE}
+length(colnames(mnist_test))
+```
+
+A sample of the column names for the data set **mnist_test** is shown below.
+
+```{r, echo=TRUE}
+num_head = 5    # Set desired size
+head(colnames(mnist_test), num_head)
+```
+
+A sample of the column names for the data set **mnist_train** is shown below.
+
+```{r, echo=TRUE}
+head(colnames(mnist_test), num_head)
+```
+
+A frequency table of the outcome variable **label** is shown for the training data set by the code segment below.
+
+```{r, echo=TRUE}
+table(mnist_train$label)
+```
+
+A frequency table of the outcome variable **label** is shown for the testing data set by the code segment below.
+
+```{r, echo=TRUE}
+table(mnist_test$label)
+```
+
+The code segment below performs a principal component analysis (PCA) of the training data set.
+
+```{r, echo=TRUE}
+pca_train <- prcomp(mnist_train[,-1], center = TRUE, scale. = TRUE)
+# pca_train
+```
+
+The code segment below generates a scree plot for the principal component analysis (PCA) of the training data set.
+
+```{r, echo=TRUE}
+fviz_eig(pca_train)
+```      
+
+The code segment below performs a principal component analysis (PCA) of the testing data set.
+
+```{r, echo=TRUE}
+pca_test <- prcomp(mnist_test[,-1], center = TRUE, scale. = TRUE)
+# pca_test
+```
+
+The code segment below generates a scree plot for the principal component analysis (PCA) of the testing data set.
+
+```{r, echo=TRUE}
+fviz_eig(pca_test)
+```      
+
+The code segment below uses `kmeans` function to cluster the training data.
+
+```{r, echo=TRUE}
+
+```
+
+
+### Binary Classification: Coat vs. Shirt
+
+
+
+###  Multi-class classification
+
+
+
